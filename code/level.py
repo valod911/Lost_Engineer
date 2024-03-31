@@ -21,7 +21,7 @@ class Level:
                 Player((obj.x, obj.y), self.all_sprites)
                 print(obj.x, obj.y)
 
-    def run(self):
-        self.all_sprites.update()
+    def run(self, dt):
+        self.all_sprites.update(dt)
         self.display_surface.fill('black')
         self.all_sprites.draw(self.display_surface)
