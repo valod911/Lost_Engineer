@@ -34,7 +34,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.direction.x * self.speed * dt
         self.collision('horizontal')
 
-        # vertical
+        # vertical - gravity:
+        # где-то на стаковере есть объяснение данной темы. Связана с неправильной моделью построения ускрорения
         self.direction.y += self.gravity/2 * dt
         self.rect.y += self.direction.y * dt
         self.direction.y += self.gravity/2 * dt
@@ -51,7 +52,14 @@ class Player(pygame.sprite.Sprite):
                     if self.rect.right >= sprite.rect.left and self.old_rect.right <= sprite.old_rect.left:
                         self.rect.right = sprite.rect.left
                 else:   # vertical
-                    pass
+                    # top
+                    if self.rect.top <= sprite.rect.bottom and self.old_rect.top >= sprite.old_rect.bottom:
+                        self.rect.top = sprite.rect.bottom
+                    # bottom
+                    if self.rect.bottom >= sprite.rect.top and self.old_rect.bottom <= sprite.old_rect.top:
+                        self.rect.bottom = sprite.rect.top
+
+                    self.direction.y = 0
     def update(self, dt):
         self.old_rect = self.rect.copy()
         self.input()
