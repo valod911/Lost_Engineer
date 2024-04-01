@@ -50,8 +50,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.direction.x * self.speed * dt
         self.collision('horizontal')
 
-        # slide player on wall
-        if not self.on_surface['floor'] and any((self.on_surface['left'], self.on_surface['right'])) and not self.timers['wall slide block'].active:
+        if not self.on_surface['floor'] and any((self.on_surface['left'], self.on_surface['right'])):
             self.direction.y = 0
             self.rect.y += self.gravity / 10 * dt
         else:
@@ -97,6 +96,7 @@ class Player(pygame.sprite.Sprite):
         self.on_surface['right'] = True if right_rect.collidelist(collide_rects) >= 0 else False
         self.on_surface['left'] = True if left_rect.collidelist(collide_rects) >= 0 else False
         self.on_surface['top'] = True if top_rect.collidelist(collide_rects) >= 0 else False
+
 
     def collision(self, axis):
         for sprite in self.collision_sprites:
