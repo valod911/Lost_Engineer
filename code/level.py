@@ -20,9 +20,10 @@ class Level:
         for obj in tmx_map.get_layer_by_name('Objects'):
             if obj.name == 'Player':
                 Player((obj.x, obj.y), self.all_sprites, self.collision_sprites)
-                print(obj.x, obj.y)
+                if DEBUG_MODE:
+                    print(obj.x, obj.y)
 
     def run(self, dt):
-        self.all_sprites.update(dt)
         self.display_surface.fill('black')
+        self.all_sprites.update(dt)
         self.all_sprites.draw(self.display_surface)
