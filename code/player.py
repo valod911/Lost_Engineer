@@ -42,17 +42,24 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.direction.x * self.speed * dt
         self.collision('horizontal')
 
-        # vertical - gravity:
-        # где-то на стаковере есть объяснение данной темы. Связана с неправильной моделью построения ускрорения
-        self.direction.y += self.gravity/2 * dt
-        self.rect.y += self.direction.y * dt
-        self.direction.y += self.gravity/2 * dt
+        if not self.on_surface['floor'] and any((self.on_surface['left'], self.on_surface['right'])):
+            self.direction.y = 0
+            self.rect.y += self.gravity / 10 * dt
+        else:
+            # vertical - gravity:
+            # где-то на стаковере есть объяснение данной темы. Связана с неправильной моделью построения ускрорения
+            self.direction.y += self.gravity/2 * dt
+            self.rect.y += self.direction.y * dt
+            self.direction.y += self.gravity/2 * dt
+
         self.collision('vertical')
 
         if self.jump:
             if self.on_surface['floor']:
                 self.direction.y = -self.jump_height
             self.jump = False
+
+        #self.collision('vertical')
 
     def check_contact(self):
         # pygame.Rect((l,t),(w,h))
@@ -76,7 +83,6 @@ class Player(pygame.sprite.Sprite):
         self.on_surface['right'] = True if right_rect.collidelist(collide_rects) >= 0 else False
         self.on_surface['left'] = True if left_rect.collidelist(collide_rects) >= 0 else False
         self.on_surface['top'] = True if top_rect.collidelist(collide_rects) >= 0 else False
-
 
     def collision(self, axis):
         for sprite in self.collision_sprites:
