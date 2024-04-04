@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="3" nextobjectid="4">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="4" nextobjectid="9">
  <tileset firstgid="1" source="../tile_maps/spritesheet_tiles.tsx"/>
  <tileset firstgid="91" source="../tile_maps/player.tsx"/>
  <layer id="1" name="Terrain" width="20" height="10">
   <data encoding="csv">
 0,0,0,40,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,39,0,0,0,0,39,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,40,0,40,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,23,0,40,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,23,0,0,0,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,23,23,40,40,0,40,40,0,0,0,0,0,0,0,0,0,0,0,0,
+0,39,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,40,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,23,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,23,23,40,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,44,
 53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53
 </data>
  </layer>
+ <objectgroup id="3" name="Moving Objects">
+  <object id="4" name="helicopter" x="632" y="382" width="10" height="258">
+   <properties>
+    <property name="flip" type="bool" value="false"/>
+    <property name="platform" type="bool" value="true"/>
+    <property name="speed" type="int" value="100"/>
+   </properties>
+  </object>
+  <object id="8" name="helicopter" x="269" y="699" width="484" height="10">
+   <properties>
+    <property name="flip" type="bool" value="false"/>
+    <property name="platform" type="bool" value="true"/>
+    <property name="speed" type="int" value="80"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="2" name="Objects">
   <object id="3" name="Player" gid="91" x="364" y="384" width="90" height="90"/>
  </objectgroup>
